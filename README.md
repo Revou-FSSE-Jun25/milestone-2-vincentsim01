@@ -6,6 +6,8 @@
 Revofun is a small collection of fun, browser-based games built with **HTML, CSS, and JavaScript**.  
 The project hosts **three games** — each with its own Indonesian-inspired twist — along with a clean, mobile-friendly homepage.
 
+- Website can be accessed: https://revofunvincent.netlify.app/
+
 ---
 
 ## ✨ Features
@@ -100,6 +102,28 @@ Revofun includes three unique games:
 
 ---
 
+RevoU Second Assignment/
+│
+├── asset/ # Images, videos, or other assets
+│
+├── css/ # Stylesheets
+│ ├── apiairrumput.css
+│ ├── katamutiara.css
+│ └── style.css
+│
+├── script/ # JavaScript files
+│ ├── apiairrumput.js
+│ ├── katamutiara.js
+│ ├── magicduelscript.js
+│ └── script.js
+│
+├── apiairrumput.html # API Air Rumput game
+├── katamutiara.html # Kata Mutiara page
+├── magicduel.html # Magic Duel game
+├── index.html # Main landing page
+│
+└── README.md # Project documentation
+
 ## 🛠️ Tech Stack
 - **HTML5** – structure  
 - **CSS3** – styling, responsive design, clip-path effects  
@@ -107,4 +131,12 @@ Revofun includes three unique games:
 - **Google Fonts** – typography  
 - **Freepik Assets** – images and illustrations  
 
----
+
+
+
+## Next Step
+- Conversion to typescript
+- Add leaderboard
+- Next level for Api-Air-Rumput
+
+--- 
