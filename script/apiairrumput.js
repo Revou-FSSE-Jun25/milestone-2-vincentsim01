@@ -375,15 +375,15 @@ function duelStart(e){
                 // grassAttackButton.classList.remove('cursor-not-allowed');
                 // physicalAttackButton.classList.remove('cursor-not-allowed');
 
-                    fireAttackButton.classList.add('cursor-pointer');
-                    waterAttackButton.classList.add('cursor-pointer');
-                    grassAttackButton.classList.add('cursor-pointer');
-                    physicalAttackButton.classList.add('cursor-pointer');
+                fireAttackButton.classList.add('cursor-pointer');
+                waterAttackButton.classList.add('cursor-pointer');
+                grassAttackButton.classList.add('cursor-pointer');
+                physicalAttackButton.classList.add('cursor-pointer');
 
-                    fireAttackButton.classList.remove('hidden');
-                    waterAttackButton.classList.remove('hidden');
-                    grassAttackButton.classList.remove('hidden');
-                    physicalAttackButton.classList.remove('hidden');
+                fireAttackButton.classList.remove('hidden');
+                waterAttackButton.classList.remove('hidden');
+                grassAttackButton.classList.remove('hidden');
+                physicalAttackButton.classList.remove('hidden');
                 
                 fireAttackButton.classList.remove('text-gray-100');
                 waterAttackButton.classList.remove('text-gray-100');
@@ -593,7 +593,7 @@ function duelStart(e){
                     physicalAttackButton.classList.remove('hidden');
 
 
-                                        fireAttackButton.classList.add('cursor-pointer');
+                    fireAttackButton.classList.add('cursor-pointer');
                     waterAttackButton.classList.add('cursor-pointer');
                     grassAttackButton.classList.add('cursor-pointer');
                     physicalAttackButton.classList.add('cursor-pointer');
@@ -638,15 +638,15 @@ function duelStart(e){
                 // grassAttackButton.classList.remove('cursor-not-allowed');
                 // physicalAttackButton.classList.remove('cursor-not-allowed');
 
-                    fireAttackButton.classList.remove('hidden');
-                    waterAttackButton.classList.remove('hidden');
-                    grassAttackButton.classList.remove('hidden');
-                    physicalAttackButton.classList.remove('hidden');
+                fireAttackButton.classList.remove('hidden');
+                waterAttackButton.classList.remove('hidden');
+                grassAttackButton.classList.remove('hidden');
+                physicalAttackButton.classList.remove('hidden');
 
-                                        fireAttackButton.classList.add('cursor-pointer');
-                    waterAttackButton.classList.add('cursor-pointer');
-                    grassAttackButton.classList.add('cursor-pointer');
-                    physicalAttackButton.classList.add('cursor-pointer');
+                fireAttackButton.classList.add('cursor-pointer');
+                waterAttackButton.classList.add('cursor-pointer');
+                grassAttackButton.classList.add('cursor-pointer');
+                physicalAttackButton.classList.add('cursor-pointer');
 
                 fireAttackButton.classList.remove('text-gray-100');
                 waterAttackButton.classList.remove('text-gray-100');
@@ -698,7 +698,7 @@ function duelStart(e){
                 // grassAttackButton.classList.remove('cursor-not-allowed');
                 // physicalAttackButton.classList.remove('cursor-not-allowed');
 
-                                    fireAttackButton.classList.add('cursor-pointer');
+                    fireAttackButton.classList.add('cursor-pointer');
                     waterAttackButton.classList.add('cursor-pointer');
                     grassAttackButton.classList.add('cursor-pointer');
                     physicalAttackButton.classList.add('cursor-pointer');
@@ -756,7 +756,7 @@ function duelStart(e){
                     grassAttackButton.classList.remove('hidden');
                     physicalAttackButton.classList.remove('hidden');
 
-                                        fireAttackButton.classList.add('cursor-pointer');
+                    fireAttackButton.classList.add('cursor-pointer');
                     waterAttackButton.classList.add('cursor-pointer');
                     grassAttackButton.classList.add('cursor-pointer');
                     physicalAttackButton.classList.add('cursor-pointer');
@@ -807,7 +807,7 @@ function duelStart(e){
                     grassAttackButton.classList.remove('hidden');
                     physicalAttackButton.classList.remove('hidden');
 
-                                        fireAttackButton.classList.add('cursor-pointer');
+                    fireAttackButton.classList.add('cursor-pointer');
                     waterAttackButton.classList.add('cursor-pointer');
                     grassAttackButton.classList.add('cursor-pointer');
                     physicalAttackButton.classList.add('cursor-pointer');
@@ -895,38 +895,16 @@ function duelStart(e){
                 defeatedSong.pause();
                 battleSong.pause();
                 battleSong.currentTime = 0;
-                // gameInstruction.textContent = "";
-                // duelResultText.textContent = "";
-                // fireAttackCount.textContent = "";
-                // waterAttackCount.textContent = "";
-                // grassAttackCount.textContent = "";
-                // physicalAttackCount.textContent = "";
-                // duelResultSuperEffective.textContent = "";
-                // duelResultNormallyEffective.textContent = "";
-                // duelResultNotEffective.textContent = "";
-                // totalRoundCount.textContent = "";
                 yourHPValue = 100;
                 enemyHPValue = 100;
-                // gameInstruction.textContent = `Let's continue the duel`;
-                // roundCounter = 0;
-                // fireAttackCounter = 0;
-                // waterAttackCounter = 0;
-                // grassAttackCounter = 0;
-                // physicalAttackCounter = 0;
-                // superEffectiveContainer =0;
-                // normallyEffectiveContainer = 0;
-                // notEffectiveContainer = 0;
                 yourHP.style.width = `${yourHPValue}%`;
                 enemyHP.style.width = `${enemyHPValue}%`;
                 duelContainer.classList.add("hidden");
-                // welcomeDescription.classList.remove("hidden");
                 startAdventureButton.classList.remove("hidden");
-                // welcomeTitle.classList.remove("hidden");
                 welcomeContainer.classList.remove("hidden");
                 DisplayCharacter(characterArray);
                 characterSelectionContainer.classList.remove('hidden');
                 chooseCharacterButton.classList.add('hidden');
-                // alert('this button works')
         });
 
 
