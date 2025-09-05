@@ -192,12 +192,9 @@ function DisplayCharacter(characterArray){
         characterDisplayContainer.appendChild(newDiv);
         pokemons=[...characterArray];
 })
-
        clickPokemon();
-
        
 }
-
 
   function clickPokemon(){
         pokemons.forEach(pokemon => {
@@ -213,6 +210,7 @@ function DisplayCharacter(characterArray){
             });
             const pokemonCharacter = document.getElementById(`${pokemon}Character`);
             
+            //update your pokemon avatar at the battle arena to the one that you selected
             pokemonCharacter.addEventListener('click', () => {
                 yourPokemon.src = `./asset/${pokemon}.png`;
                 yourName.textContent = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
@@ -223,10 +221,13 @@ function DisplayCharacter(characterArray){
 
 
 startAdventureButton.addEventListener("click", () => {
+    //choose one random character from the enemy array
     chosenEnemy = enemyArray[Math.floor(Math.random() * enemyArray.length)];
     enemyPokemon.src = `./asset/${chosenEnemy}.png`;
     enemyPokemon.classList.add('w-[18%]');
     enemyPokemon.classList.add('h-[18%]');
+
+    //hide the introduction 
     gameStory.classList.add('hidden');
     gameStory.classList.remove('starWarsText');
     enemyName.textContent = chosenEnemy;
@@ -237,8 +238,12 @@ startAdventureButton.addEventListener("click", () => {
     startAdventureButton.classList.add("hidden");
     welcomeTitle.classList.add("hidden");
     welcomeContainer.classList.add("hidden");
+
+    //give animation to your character and enemy character when the battle just start
     yourPokemon.classList.add('youMoveRight');
     enemyPokemon.classList.add('enemyMoveLeft');
+
+    //remove moving keyframe for both you and enemy after 1 second
     setTimeout(()=>{
         yourPokemon.classList.remove('youMoveRight');
         enemyPokemon.classList.remove('enemyMoveLeft');
@@ -261,6 +266,7 @@ var yourHPValue = 100;
 
 var enemyHPValue = 100;
 
+//duel outcome
 function resultCheck(){
     setTimeout(()=>{
             if(yourHPValue <= 0 && enemyHPValue > 0){
@@ -316,18 +322,26 @@ function resultCheck(){
 
 }
 
+
+//start the duel after clicking one of the element button
 function duelStart(e){
 
     roundCounter++;
+
+    //choose which element for enemy either fire, water or grass
     enemyAttackThisTurn = enemyAttackArray[Math.floor(Math.random() * enemyAttackArray.length)];
+
+    //assign health bar
     yourHP.style.width = `${yourHPValue}%`;
     enemyHP.style.width = `${enemyHPValue}%`;
 
+    //once one of the element button is selected all of the element buttons will be hidden for 3.5s
     fireAttackButton.classList.add('hidden');
     waterAttackButton.classList.add('hidden');
     grassAttackButton.classList.add('hidden');
     physicalAttackButton.classList.add('hidden');
 
+    //remove pointer
     fireAttackButton.classList.remove('cursor-pointer');
     waterAttackButton.classList.remove('cursor-pointer');
     grassAttackButton.classList.remove('cursor-pointer');
@@ -337,6 +351,8 @@ function duelStart(e){
     waterAttackButton.classList.add('text-gray-100');
     grassAttackButton.classList.add('text-gray-100');
     physicalAttackButton.classList.add('text-gray-100');
+
+    //if player choose fire button
     if(e.target.id === "fireAttackButton"){
         fireAttackCounter++;
         if(enemyAttackThisTurn === "Fire"){
@@ -391,7 +407,7 @@ function duelStart(e){
             playerDamageThisTurn = 0;
             enemyDamageThisTurn = 20;
             setTimeout(() => {
-                gameInstruction.textContent = `You dealt ${playerDamageThisTurn} damage but your opponent dealt ${enemyDamageThisTurn} damage! It's not effective!`;
+                gameInstruction.textContent = `You dealt ${playerDamageThisTurn} damage but your opponent dealt ${enemyDamageThisTurn} damage! It's super effective!`;
                 yourHPValue = yourHPValue - enemyDamageThisTurn;
                 yourHP.style.width = `${yourHPValue}%`;
                 enemyHPValue = enemyHPValue - playerDamageThisTurn;
@@ -480,9 +496,8 @@ function duelStart(e){
                 return;
             }, 2500);
         }
-        
-
     }
+    //if player choose water button
     else if(e.target.id === "waterAttackButton"){
         waterAttackCounter++;
             if(enemyAttackThisTurn === "Fire"){
@@ -583,7 +598,7 @@ function duelStart(e){
                 playerDamageThisTurn = 0;
                 enemyDamageThisTurn = 20;
                 setTimeout(() => {
-                    gameInstruction.textContent = `You dealt ${playerDamageThisTurn} damage but your opponent dealt ${enemyDamageThisTurn} damage! It's not effective!`;
+                    gameInstruction.textContent = `You dealt ${playerDamageThisTurn} damage but your opponent dealt ${enemyDamageThisTurn} damage! It's super effective!`;
                     yourHPValue = yourHPValue - enemyDamageThisTurn;
                     yourHP.style.width = `${yourHPValue}%`;
                     enemyHPValue = enemyHPValue - playerDamageThisTurn;
@@ -627,8 +642,8 @@ function duelStart(e){
                 return;
             }, 2500);
             }
-
         }
+    //if player choose grass button
     else if(e.target.id === "grassAttackButton"){
         grassAttackCounter++;
             if(enemyAttackThisTurn === "Fire"){
@@ -638,7 +653,7 @@ function duelStart(e){
                 setTimeout(() => {                
                     elementYou.innerHTML = "";
                     elementEnemy.innerHTML = "";
-                    gameInstruction.textContent = `You dealt ${playerDamageThisTurn} damage but your opponent dealt ${enemyDamageThisTurn} damage! It's not effective!`;
+                    gameInstruction.textContent = `You dealt ${playerDamageThisTurn} damage but your opponent dealt ${enemyDamageThisTurn} damage! It's super effective!`;
                     yourHPValue = yourHPValue - enemyDamageThisTurn;
                     yourHP.style.width = `${yourHPValue}%`;
                     enemyHPValue = enemyHPValue - playerDamageThisTurn;
@@ -733,7 +748,7 @@ function duelStart(e){
             }else if(enemyAttackThisTurn === "Grass"){
                 gameInstruction.textContent = "Enemy used Grass attack! It's a tie!";
                 playerDamageThisTurn = 0;
-                enemyDamageThisTurn = 00;
+                enemyDamageThisTurn = 0;
                 setTimeout(() => {
                     gameInstruction.textContent = `Both you and your opponent dealt ${playerDamageThisTurn} damage! It's normally effective!`;
                     yourHPValue = yourHPValue - enemyDamageThisTurn;
@@ -777,8 +792,8 @@ function duelStart(e){
                     return;
                 }, 2500);
             }
-
          }
+    //if player choose physical button
      else if(e.target.id === "physicalAttackButton"){
             physicalAttackCounter++;
               gameInstruction.innerHTML = `Since you use physical enemy then also use physical!`;
@@ -791,9 +806,7 @@ function duelStart(e){
                     enemyHPValue = enemyHPValue - playerDamageThisTurn;
                     enemyHP.style.width = `${enemyHPValue}%`;
                     normallyEffectiveContainer++;
-
                     yourPokemon.classList.add('yourelementPhysical');
-
                     enemyPokemon.classList.add('enemyelementPhysical');
                 setTimeout(()=>{
                     NotEffectiveSound.play();
@@ -830,21 +843,32 @@ function duelStart(e){
         }
 
 
-
+        //after duel end click this button to restart the game
         playAgainButton.addEventListener("click", ()=>{
                 duelResultContainer.classList.add("hidden");
+
+                //reset the song
                 tieSong.pause();
                 victorySong.pause();
+                victorySong.currentTime = 0;
                 defeatedSong.pause();
                 battleSong.pause();
                 battleSong.currentTime = 0;
+                opening.play();
+                opening.currentTime=0;
+
+                //replenish health
                 yourHPValue = 100;
                 enemyHPValue = 100;
                 yourHP.style.width = `${yourHPValue}%`;
                 enemyHP.style.width = `${enemyHPValue}%`;
+
+                //hide the duel container
                 duelContainer.classList.add("hidden");
                 startAdventureButton.classList.remove("hidden");
                 welcomeContainer.classList.remove("hidden");
+
+                //show the character select screen again
                 DisplayCharacter(characterArray);
                 characterSelectionContainer.classList.remove('hidden');
                 chooseCharacterButton.classList.add('hidden');
