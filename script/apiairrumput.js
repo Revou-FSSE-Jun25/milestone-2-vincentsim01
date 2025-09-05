@@ -314,8 +314,6 @@ function resultCheck(){
             }
     },1000);
 
-
-
 }
 
 function duelStart(e){
@@ -324,10 +322,6 @@ function duelStart(e){
     enemyAttackThisTurn = enemyAttackArray[Math.floor(Math.random() * enemyAttackArray.length)];
     yourHP.style.width = `${yourHPValue}%`;
     enemyHP.style.width = `${enemyHPValue}%`;
-    // fireAttackButton.classList.add('cursor-not-allowed');
-    // waterAttackButton.classList.add('cursor-not-allowed');
-    // grassAttackButton.classList.add('cursor-not-allowed');
-    // physicalAttackButton.classList.add('cursor-not-allowed');
 
     fireAttackButton.classList.add('hidden');
     waterAttackButton.classList.add('hidden');
@@ -347,8 +341,8 @@ function duelStart(e){
         fireAttackCounter++;
         if(enemyAttackThisTurn === "Fire"){
             gameInstruction.textContent = "Enemy used Fire attack! It's a tie!";
-            playerDamageThisTurn = 10;
-            enemyDamageThisTurn = 10;
+            playerDamageThisTurn = 0;
+            enemyDamageThisTurn = 0;
             setTimeout(() => {
                 gameInstruction.textContent = `Both you and your opponent dealt ${playerDamageThisTurn} damage! It's normally effective`;
                 yourHPValue = yourHPValue - enemyDamageThisTurn;
@@ -370,10 +364,6 @@ function duelStart(e){
                 elementYou.innerHTML = "";
                 elementEnemy.innerHTML = "";
                 gameInstruction.textContent = `Let's continue the duel`;
-                // fireAttackButton.classList.remove('cursor-not-allowed');
-                // waterAttackButton.classList.remove('cursor-not-allowed');
-                // grassAttackButton.classList.remove('cursor-not-allowed');
-                // physicalAttackButton.classList.remove('cursor-not-allowed');
 
                 fireAttackButton.classList.add('cursor-pointer');
                 waterAttackButton.classList.add('cursor-pointer');
@@ -393,14 +383,12 @@ function duelStart(e){
                 elementYou.classList.remove('yourelementTie');
                 elementEnemy.classList.remove('enemyelementTie');
 
-
- 
                 return;
             }, 2500);
 
         }else if(enemyAttackThisTurn === "Water"){
             gameInstruction.textContent = "Enemy used Water attack! Your attack loses!";
-            playerDamageThisTurn = 5;
+            playerDamageThisTurn = 0;
             enemyDamageThisTurn = 20;
             setTimeout(() => {
                 gameInstruction.textContent = `You dealt ${playerDamageThisTurn} damage but your opponent dealt ${enemyDamageThisTurn} damage! It's not effective!`;
@@ -420,24 +408,20 @@ function duelStart(e){
                 }, 600);
                 resultCheck()
             }, 1000);
-                        setTimeout(() => {
-                    elementYou.innerHTML = "";
+            setTimeout(() => {
+                elementYou.innerHTML = "";
                 elementEnemy.innerHTML = "";
                 gameInstruction.textContent = `Let's continue the duel`;
-                // fireAttackButton.classList.remove('cursor-not-allowed');
-                // waterAttackButton.classList.remove('cursor-not-allowed');
-                // grassAttackButton.classList.remove('cursor-not-allowed');
-                // physicalAttackButton.classList.remove('cursor-not-allowed');
 
-                    fireAttackButton.classList.remove('hidden');
-                    waterAttackButton.classList.remove('hidden');
-                    grassAttackButton.classList.remove('hidden');
-                    physicalAttackButton.classList.remove('hidden');
+                fireAttackButton.classList.remove('hidden');
+                waterAttackButton.classList.remove('hidden');
+                grassAttackButton.classList.remove('hidden');
+                physicalAttackButton.classList.remove('hidden');
 
-                    fireAttackButton.classList.add('cursor-pointer');
-                    waterAttackButton.classList.add('cursor-pointer');
-                    grassAttackButton.classList.add('cursor-pointer');
-                    physicalAttackButton.classList.add('cursor-pointer');
+                fireAttackButton.classList.add('cursor-pointer');
+                waterAttackButton.classList.add('cursor-pointer');
+                grassAttackButton.classList.add('cursor-pointer');
+                physicalAttackButton.classList.add('cursor-pointer');
 
                 fireAttackButton.classList.remove('text-gray-100');
                 waterAttackButton.classList.remove('text-gray-100');
@@ -451,7 +435,7 @@ function duelStart(e){
         }else if(enemyAttackThisTurn === "Grass"){
             gameInstruction.textContent = "Enemy used Grass attack! Your attack wins!";
             playerDamageThisTurn = 20;
-            enemyDamageThisTurn = 5;
+            enemyDamageThisTurn = 0;
             setTimeout(() => {
                 gameInstruction.textContent = `You dealt ${playerDamageThisTurn} damage but your opponent dealt ${enemyDamageThisTurn} damage! It's super effective!`;
                 yourHPValue = yourHPValue - enemyDamageThisTurn;
@@ -474,20 +458,16 @@ function duelStart(e){
                 elementYou.innerHTML = "";
                 elementEnemy.innerHTML = "";
                 gameInstruction.textContent = `Let's continue the duel`;
-                // fireAttackButton.classList.remove('cursor-not-allowed');
-                // waterAttackButton.classList.remove('cursor-not-allowed');
-                // grassAttackButton.classList.remove('cursor-not-allowed');
-                // physicalAttackButton.classList.remove('cursor-not-allowed');
 
-                    fireAttackButton.classList.remove('hidden');
-                    waterAttackButton.classList.remove('hidden');
-                    grassAttackButton.classList.remove('hidden');
-                    physicalAttackButton.classList.remove('hidden');
+                fireAttackButton.classList.remove('hidden');
+                waterAttackButton.classList.remove('hidden');
+                grassAttackButton.classList.remove('hidden');
+                physicalAttackButton.classList.remove('hidden');
 
-                    fireAttackButton.classList.add('cursor-pointer');
-                    waterAttackButton.classList.add('cursor-pointer');
-                    grassAttackButton.classList.add('cursor-pointer');
-                    physicalAttackButton.classList.add('cursor-pointer');
+                fireAttackButton.classList.add('cursor-pointer');
+                waterAttackButton.classList.add('cursor-pointer');
+                grassAttackButton.classList.add('cursor-pointer');
+                physicalAttackButton.classList.add('cursor-pointer');
 
                 fireAttackButton.classList.remove('text-gray-100');
                 waterAttackButton.classList.remove('text-gray-100');
@@ -508,7 +488,7 @@ function duelStart(e){
             if(enemyAttackThisTurn === "Fire"){
                 gameInstruction.textContent = "Enemy used Fire attack! your attack wins!";
                 playerDamageThisTurn = 20;
-                enemyDamageThisTurn = 5;
+                enemyDamageThisTurn = 0;
                 setTimeout(() => {
                     gameInstruction.textContent = `You dealt ${playerDamageThisTurn} damage but your opponent dealt ${enemyDamageThisTurn} damage! It's super effective!`;
                     yourHPValue = yourHPValue - enemyDamageThisTurn;
@@ -531,21 +511,16 @@ function duelStart(e){
                 elementYou.innerHTML = "";
                 elementEnemy.innerHTML = "";
                 gameInstruction.textContent = `Let's continue the duel`;
-                // fireAttackButton.classList.remove('cursor-not-allowed');
-                // waterAttackButton.classList.remove('cursor-not-allowed');
-                // grassAttackButton.classList.remove('cursor-not-allowed');
-                // physicalAttackButton.classList.remove('cursor-not-allowed');
 
+                fireAttackButton.classList.remove('hidden');
+                waterAttackButton.classList.remove('hidden');
+                grassAttackButton.classList.remove('hidden');
+                physicalAttackButton.classList.remove('hidden');
 
-                    fireAttackButton.classList.remove('hidden');
-                    waterAttackButton.classList.remove('hidden');
-                    grassAttackButton.classList.remove('hidden');
-                    physicalAttackButton.classList.remove('hidden');
-
-                    fireAttackButton.classList.add('cursor-pointer');
-                    waterAttackButton.classList.add('cursor-pointer');
-                    grassAttackButton.classList.add('cursor-pointer');
-                    physicalAttackButton.classList.add('cursor-pointer');
+                fireAttackButton.classList.add('cursor-pointer');
+                waterAttackButton.classList.add('cursor-pointer');
+                grassAttackButton.classList.add('cursor-pointer');
+                physicalAttackButton.classList.add('cursor-pointer');
 
                 fireAttackButton.classList.remove('text-gray-100');
                 waterAttackButton.classList.remove('text-gray-100');
@@ -559,8 +534,8 @@ function duelStart(e){
             }, 2500);
             }else if(enemyAttackThisTurn === "Water"){
                 gameInstruction.textContent = "Enemy used Water attack! It's a tie!";
-                playerDamageThisTurn = 10;
-                enemyDamageThisTurn = 10;
+                playerDamageThisTurn = 0;
+                enemyDamageThisTurn = 0;
                 setTimeout(() => {
                     gameInstruction.textContent = `Both you and your opponent dealt ${playerDamageThisTurn} damage! It's normally effective!`;
                     yourHPValue = yourHPValue - enemyDamageThisTurn;
@@ -582,21 +557,17 @@ function duelStart(e){
                 elementYou.innerHTML = "";
                 elementEnemy.innerHTML = "";
                 gameInstruction.textContent = `Let's continue the duel`;
-                // fireAttackButton.classList.remove('cursor-not-allowed');
-                // waterAttackButton.classList.remove('cursor-not-allowed');
-                // grassAttackButton.classList.remove('cursor-not-allowed');
-                // physicalAttackButton.classList.remove('cursor-not-allowed');
 
-                    fireAttackButton.classList.remove('hidden');
-                    waterAttackButton.classList.remove('hidden');
-                    grassAttackButton.classList.remove('hidden');
-                    physicalAttackButton.classList.remove('hidden');
+                fireAttackButton.classList.remove('hidden');
+                waterAttackButton.classList.remove('hidden');
+                grassAttackButton.classList.remove('hidden');
+                physicalAttackButton.classList.remove('hidden');
 
 
-                    fireAttackButton.classList.add('cursor-pointer');
-                    waterAttackButton.classList.add('cursor-pointer');
-                    grassAttackButton.classList.add('cursor-pointer');
-                    physicalAttackButton.classList.add('cursor-pointer');
+                fireAttackButton.classList.add('cursor-pointer');
+                waterAttackButton.classList.add('cursor-pointer');
+                grassAttackButton.classList.add('cursor-pointer');
+                physicalAttackButton.classList.add('cursor-pointer');
 
                 fireAttackButton.classList.remove('text-gray-100');
                 waterAttackButton.classList.remove('text-gray-100');
@@ -609,7 +580,7 @@ function duelStart(e){
             }, 2500);
             }else if(enemyAttackThisTurn === "Grass"){
                 gameInstruction.textContent = "Enemy used Grass attack! Your attack loses!";
-                playerDamageThisTurn = 5;
+                playerDamageThisTurn = 0;
                 enemyDamageThisTurn = 20;
                 setTimeout(() => {
                     gameInstruction.textContent = `You dealt ${playerDamageThisTurn} damage but your opponent dealt ${enemyDamageThisTurn} damage! It's not effective!`;
@@ -633,10 +604,6 @@ function duelStart(e){
                 elementYou.innerHTML = "";
                 elementEnemy.innerHTML = "";
                 gameInstruction.textContent = `Let's continue the duel`;
-                // fireAttackButton.classList.remove('cursor-not-allowed');
-                // waterAttackButton.classList.remove('cursor-not-allowed');
-                // grassAttackButton.classList.remove('cursor-not-allowed');
-                // physicalAttackButton.classList.remove('cursor-not-allowed');
 
                 fireAttackButton.classList.remove('hidden');
                 waterAttackButton.classList.remove('hidden');
@@ -666,7 +633,7 @@ function duelStart(e){
         grassAttackCounter++;
             if(enemyAttackThisTurn === "Fire"){
                 gameInstruction.textContent = "Enemy used Fire attack! Your attack loses!";
-                playerDamageThisTurn = 5;
+                playerDamageThisTurn = 0;
                 enemyDamageThisTurn = 20;
                 setTimeout(() => {                
                     elementYou.innerHTML = "";
@@ -693,20 +660,16 @@ function duelStart(e){
                 elementYou.innerHTML = "";
                 elementEnemy.innerHTML = "";
                 gameInstruction.textContent = `Let's continue the duel`;
-                // fireAttackButton.classList.remove('cursor-not-allowed');
-                // waterAttackButton.classList.remove('cursor-not-allowed');
-                // grassAttackButton.classList.remove('cursor-not-allowed');
-                // physicalAttackButton.classList.remove('cursor-not-allowed');
 
-                    fireAttackButton.classList.add('cursor-pointer');
-                    waterAttackButton.classList.add('cursor-pointer');
-                    grassAttackButton.classList.add('cursor-pointer');
-                    physicalAttackButton.classList.add('cursor-pointer');
+                fireAttackButton.classList.add('cursor-pointer');
+                waterAttackButton.classList.add('cursor-pointer');
+                grassAttackButton.classList.add('cursor-pointer');
+                physicalAttackButton.classList.add('cursor-pointer');
 
-                    fireAttackButton.classList.remove('hidden');
-                    waterAttackButton.classList.remove('hidden');
-                    grassAttackButton.classList.remove('hidden');
-                    physicalAttackButton.classList.remove('hidden');
+                fireAttackButton.classList.remove('hidden');
+                waterAttackButton.classList.remove('hidden');
+                grassAttackButton.classList.remove('hidden');
+                physicalAttackButton.classList.remove('hidden');
 
                 fireAttackButton.classList.remove('text-gray-100');
                 waterAttackButton.classList.remove('text-gray-100');
@@ -722,7 +685,7 @@ function duelStart(e){
             }else if(enemyAttackThisTurn === "Water"){
                 gameInstruction.textContent = "Enemy used Water attack! Your attack wins!";
                 playerDamageThisTurn = 20;
-                enemyDamageThisTurn = 5;
+                enemyDamageThisTurn = 0;
                 setTimeout(() => {
 
                     gameInstruction.textContent = `You dealt ${playerDamageThisTurn} damage but your opponent dealt ${enemyDamageThisTurn} damage! It's super effective!`;
@@ -746,20 +709,16 @@ function duelStart(e){
                 elementYou.innerHTML = "";
                 elementEnemy.innerHTML = "";
                 gameInstruction.textContent = `Let's continue the duel`;
-                // fireAttackButton.classList.remove('cursor-not-allowed');
-                // waterAttackButton.classList.remove('cursor-not-allowed');
-                // grassAttackButton.classList.remove('cursor-not-allowed');
-                // physicalAttackButton.classList.remove('cursor-not-allowed');
 
-                    fireAttackButton.classList.remove('hidden');
-                    waterAttackButton.classList.remove('hidden');
-                    grassAttackButton.classList.remove('hidden');
-                    physicalAttackButton.classList.remove('hidden');
+                fireAttackButton.classList.remove('hidden');
+                waterAttackButton.classList.remove('hidden');
+                grassAttackButton.classList.remove('hidden');
+                physicalAttackButton.classList.remove('hidden');
 
-                    fireAttackButton.classList.add('cursor-pointer');
-                    waterAttackButton.classList.add('cursor-pointer');
-                    grassAttackButton.classList.add('cursor-pointer');
-                    physicalAttackButton.classList.add('cursor-pointer');
+                fireAttackButton.classList.add('cursor-pointer');
+                waterAttackButton.classList.add('cursor-pointer');
+                grassAttackButton.classList.add('cursor-pointer');
+                physicalAttackButton.classList.add('cursor-pointer');
 
                 fireAttackButton.classList.remove('text-gray-100');
                 waterAttackButton.classList.remove('text-gray-100');
@@ -773,8 +732,8 @@ function duelStart(e){
             }, 2500);
             }else if(enemyAttackThisTurn === "Grass"){
                 gameInstruction.textContent = "Enemy used Grass attack! It's a tie!";
-                playerDamageThisTurn = 10;
-                enemyDamageThisTurn = 10;
+                playerDamageThisTurn = 0;
+                enemyDamageThisTurn = 00;
                 setTimeout(() => {
                     gameInstruction.textContent = `Both you and your opponent dealt ${playerDamageThisTurn} damage! It's normally effective!`;
                     yourHPValue = yourHPValue - enemyDamageThisTurn;
@@ -797,10 +756,6 @@ function duelStart(e){
                 elementYou.innerHTML = "";
                 elementEnemy.innerHTML = "";
                     gameInstruction.textContent = `Let's continue the duel`;
-                    // fireAttackButton.classList.remove('cursor-not-allowed');
-                    // waterAttackButton.classList.remove('cursor-not-allowed');
-                    // grassAttackButton.classList.remove('cursor-not-allowed');
-                    // physicalAttackButton.classList.remove('cursor-not-allowed');
 
                     fireAttackButton.classList.remove('hidden');
                     waterAttackButton.classList.remove('hidden');
@@ -826,11 +781,11 @@ function duelStart(e){
          }
      else if(e.target.id === "physicalAttackButton"){
             physicalAttackCounter++;
-              gameInstruction.innerHTML = `Enemy used  ${enemyAttackThisTurn} attack! However it doesn't matter since you use physical!`;
-                playerDamageThisTurn = 3;
-                enemyDamageThisTurn = 3;
+              gameInstruction.innerHTML = `Since you use physical enemy then also use physical!`;
+                playerDamageThisTurn = Math.floor(Math.random()*21);
+                enemyDamageThisTurn = Math.floor(Math.random()*21);
                 setTimeout(() => {
-                    gameInstruction.textContent = `Both you and your opponent dealt ${playerDamageThisTurn} damage! It's okay effective!`;
+                    gameInstruction.textContent = `you dealt ${playerDamageThisTurn} damage and your opponent dealt ${enemyDamageThisTurn}! It's okay effective!`;
                     yourHPValue = yourHPValue - enemyDamageThisTurn;
                     yourHP.style.width = `${yourHPValue}%`;
                     enemyHPValue = enemyHPValue - playerDamageThisTurn;
@@ -849,42 +804,30 @@ function duelStart(e){
                 elementYou.innerHTML = "";
                 elementEnemy.innerHTML = "";
                 gameInstruction.textContent = `Let's continue the duel`;
-                // fireAttackButton.classList.remove('cursor-not-allowed');
-                // waterAttackButton.classList.remove('cursor-not-allowed');
-                // grassAttackButton.classList.remove('cursor-not-allowed');
-                // physicalAttackButton.classList.remove('cursor-not-allowed');
 
-                    yourPokemon.classList.remove('yourelementPhysical');
+                yourPokemon.classList.remove('yourelementPhysical');
 
-                    enemyPokemon.classList.remove('enemyelementPhysical');
+                enemyPokemon.classList.remove('enemyelementPhysical');
 
-                    fireAttackButton.classList.remove('hidden');
-                    waterAttackButton.classList.remove('hidden');
-                    grassAttackButton.classList.remove('hidden');
-                    physicalAttackButton.classList.remove('hidden');
+                fireAttackButton.classList.remove('hidden');
+                waterAttackButton.classList.remove('hidden');
+                grassAttackButton.classList.remove('hidden');
+                physicalAttackButton.classList.remove('hidden');
 
-                    fireAttackButton.classList.add('cursor-pointer');
-                    waterAttackButton.classList.add('cursor-pointer');
-                    grassAttackButton.classList.add('cursor-pointer');
-                    physicalAttackButton.classList.add('cursor-pointer');
+                fireAttackButton.classList.add('cursor-pointer');
+                waterAttackButton.classList.add('cursor-pointer');
+                grassAttackButton.classList.add('cursor-pointer');
+                physicalAttackButton.classList.add('cursor-pointer');
 
                 fireAttackButton.classList.remove('text-gray-100');
                 waterAttackButton.classList.remove('text-gray-100');
                 grassAttackButton.classList.remove('text-gray-100');
                 physicalAttackButton.classList.remove('text-gray-100');
 
-                // yourPokemon.classList.remove('yourelementTie');
-                // enemyPokemon.classList.remove('enemyelementTie');
                 return;
             }, 2500);
 
         }
-
-
-
-
-
-}
 
 
 
@@ -908,3 +851,4 @@ function duelStart(e){
         });
 
 
+    }
