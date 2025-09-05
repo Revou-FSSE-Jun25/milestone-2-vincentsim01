@@ -8,7 +8,6 @@ let abraKadabraButton = document.getElementById('abraKadabraButton');
 
 
 const avadakedavra = document.getElementById('avadakedavra');
-const crucio = document.getElementById('crucio');
 
 let magicMeterLeft = document.getElementById('magicMeterLeft');
 let magicMeterRight = document.getElementById('magicMeterRight');
@@ -40,33 +39,29 @@ let intervalId = null;
             if (intervalId) {
                 clearInterval(intervalId);
             }
+
+            //run a new interval that reduces Harris's magic token and increases koklemot's magic token
             intervalId = setInterval(() => {
                 magicToken--;
                 opponentMagicToken++;
                 magicMeterLeft.style.width = magicToken + '%';
                 magicMeterRight.style.width = opponentMagicToken + '%';
                 if(magicToken<=0){
-                        // crucio.classList.remove('hidden');
-                        // setTimeout(() => {
-                        //     crucio.classList.add('hidden');
-                        // }, 2000);
-                        // clearInterval(intervalId);
                         magicDuelOutcomeContainer.classList.remove('hidden');
                         magicDuelOutcome.classList.remove('hidden');
                         magicDuelResult.textContent = 'You lose!';
                         magicDuelMessage.textContent = 'Better luck next time!';
                         magicDuelClickCount.textContent = `You clicked ${clickCounter} times!`;
                         magicDuelOutcomeLoseButton.classList.remove('hidden');
-
                 }
+                //koklemot's spell casting speed increases following a rational function graph depending on the duel level
             }, 1000/duelLevelCounter);
     }
 
 
-
+//click the duel button and start the duel
 duelStartButton.addEventListener('click', () => { 
     hedwigTheme.play();
-    // let clickCounter = 0;
     magicDuelMechanism.classList.remove('hidden');
     duelStartButton.classList.add('hidden');
     harrisspell.classList.remove('hidden');
@@ -81,13 +76,14 @@ duelStartButton.addEventListener('click', () => {
 
     spellSpeed.textContent = `1 Spell every ${spellspeed.toFixed(2)} Seconds`;
 
+    //start koklemot spellcasting
     startInterval();
 
-    let magicDuelLevelInt = Number(magicDuelLevel.textContent);
+    // let magicDuelLevelInt = Number(magicDuelLevel.textContent);
 
 });
 
-
+//Harris cast spell
 abraKadabraButton.addEventListener('click', () => {
         magicToken += 5;
         opponentMagicToken -= 5;
@@ -95,13 +91,18 @@ abraKadabraButton.addEventListener('click', () => {
         magicMeterRight.style.width = opponentMagicToken + '%';
         clickCounter++;
 
+        //if Harris win the round
         if(magicToken>=100){
-                // clearInterval(intervalId);
+                //show the victory pop up finishing attack
                 avadakedavra.classList.remove('hidden');
                 avadakedavrasound.play();
+
+                //hide the victory pop up finishing attack after 2 seconds
                 setTimeout(() => {
                     avadakedavra.classList.add('hidden');
                 }, 2000);
+
+                //hide the duel outcome container
                 magicDuelOutcomeContainer.classList.remove('hidden');
                 magicDuelOutcome.classList.remove('hidden');
                 magicDuelResult.textContent = 'You win!';
@@ -115,12 +116,7 @@ abraKadabraButton.addEventListener('click', () => {
         }
     }); 
 
-
-    
-
-
-
-
+    //If Harris lose the round
     magicDuelOutcomeLoseButton.addEventListener('click', () => {
         magicDuelOutcomeContainer.classList.add('hidden');
         magicDuelOutcome.classList.add('hidden');
@@ -129,12 +125,15 @@ abraKadabraButton.addEventListener('click', () => {
         magicDuelClickCount.textContent = '';
         magicDuelOutcomeWinButton.classList.add('hidden');
         magicDuelOutcomeLoseButton.classList.add('hidden');
+
+        //reset the magic token
         magicToken = 10;
         opponentMagicToken = 100 - magicToken;
         magicMeterLeft.style.width = magicToken + '%';
         magicMeterRight.style.width = opponentMagicToken + '%';
     });
 
+    //If Harris win the round
     magicDuelOutcomeWinButton.addEventListener('click', () => {
         magicDuelOutcomeContainer.classList.add('hidden');
         magicDuelOutcome.classList.add('hidden');
@@ -143,22 +142,24 @@ abraKadabraButton.addEventListener('click', () => {
         magicDuelClickCount.textContent = '';
         magicDuelOutcomeWinButton.classList.add('hidden');
         magicDuelOutcomeLoseButton.classList.add('hidden');
-        console.log(`magictoken win button ${magicToken} opponentMagicToken: ${opponentMagicToken}`);
+
+        //reset the magictoken
         magicToken = 10;
         opponentMagicToken = 100 - magicToken;
 
-          const levelNow = parseInt(magicDuelLevel.textContent, 10) || 0;
+        //go to the next level
         duelLevelCounter = duelLevelCounter + 1;
-        // console.log(`duelLevelCounter win button: ${duelLevelCounter}`);
         magicDuelLevel.textContent = duelLevelCounter;
+
+        //increase Koklemot spell speed
         let spellspeed = 1 / duelLevelCounter;
         spellSpeed.textContent = `1 Spell every ${spellspeed.toFixed(2)} seconds`;
         startInterval();
     
     });
 
-
-            magicDuelOutcomeExitButton.addEventListener('click', () => {
+        //Exit from the game
+        magicDuelOutcomeExitButton.addEventListener('click', () => {
         magicDuelOutcomeContainer.classList.add('hidden');
         magicDuelOutcome.classList.add('hidden');
         magicDuelResult.textContent = '';
@@ -168,14 +169,16 @@ abraKadabraButton.addEventListener('click', () => {
         koklemotspellpower.classList.add('hidden');
         magicDuelOutcomeWinButton.classList.add('hidden');
         magicDuelOutcomeLoseButton.classList.add('hidden');
-        console.log(`magictoken exit buttonn ${magicToken} opponentMagicToken: ${opponentMagicToken}`);
+
         magicMeterLeft.style.width = magicToken + '%';
         magicMeterRight.style.width = opponentMagicToken + '%';
+
+        //hide the duel container
         magicDuelMechanism.classList.add('hidden');
         duelStartButton.classList.remove('hidden');
+
         duelLevelCounter = 1;  // reset level dengan jelas
         magicDuelLevel.textContent = duelLevelCounter;
-        console.log(`duelLevelCounter exit button: ${duelLevelCounter}`);
         spellSpeed.textContent = duelLevelCounter;
         clearInterval(intervalId);
         clickCounter=0;

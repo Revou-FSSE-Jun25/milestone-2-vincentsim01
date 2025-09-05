@@ -87,51 +87,54 @@
     <audio src="./asset/hedwigtheme.mp3" id="hedwigTheme" loop></audio>
     <audio src="./asset/avadakedavra.mp3" id="avadakedavrasound"></audio>
         <section id="avraKedavraGameContainer" class="hidden md:grid md:w-[100%] md:h-[100vh] relative md:grid-cols-6 md:grid-rows-4 bg-[url('./asset/background.png')] bg-cover bg-center">
+
+        <!-- Harris Poetra detail -->
         <div class='col-start-2 col-end-3 row-start-1 row-end-2 flex justify-center items-center'><div class="font-harrypotter text-2xl hover:rotate-2 transition-hover duration-200">Harris Poetra</div></div> 
         <div class="col-start-2 col-end-3  row-start-2 row-end-3 flex justify-center items-center hidden" id="harrisspell"><div class="font-harrypotter">Cast Your Spell to Defeat Koklemot!  <i class="fa-solid fa-arrow-right"></i></div><button class="border border-black cursor-pointer p-5 rounded-md font-harrypotter shadow-lg hover:scale-105 active:scale-95 transition-active duration-200 active:shadow-2xl active:shadow-green-300" id="abraKadabraButton">Sim Salabim</button></div>
         <div class="col-start-2 col-end-3  row-start-3 row-end-5 flex justify-center items-bottom"><img src="./asset/harrispoetra.png" alt="Harris Poetra" title="Harris Poetra, a young wizard from school of HargaWas" class="h-[100%] hover:rotate-3 transition-hover duration-300"></div>
+
+        <!--Title of the game-->
         <div class="text-center col-start-3 col-end-5 row-start-1 row-end-3 flex justify-center items-center flex"><p class="font-harrypotter text-6xl animate-bounce">Magic Duel <span id="magicDuelLevel" class="font-harrypotter"></span></p></div>
         <div class="col-start-3 col-end-5 row-start-4 row-end-5 justify-center items-bottom flex" id="magicDuelContainer">
+
+            <!--Click the button to start duel-->
             <button id="duelStartButton" class="font-harrypotter rounded-full pl-5 pr-5 h-[50%] border border-black shadow-lg hover:scale-105 active:scale-95 active:shadow-green-300 active:shadow-2xl cursor-pointer">Start Duel</button>
             <div id="magicDuelMechanism" class="hidden w-[90%]">
 
                 <div id="magicMeter" class=" h-[70px] w-[100%] relative flex">
-
+                    <!-- Spell gauge meter from Harris and Koklemot -->
                     <div id="magicMeterLeft" class="bg-gradient-to-r from-green-700 via-green-500 to-green-100 h-[100%] thunder shadow-2xl shadow-green-500"></div>
                     <div id="magicMeterRight" class="bg-gradient-to-l from-red-700 via-red-500 to-red-100 h-[100%] thunder-reverse shadow-2xl shadow-red-500"></div>
                     <img src="./asset/transparentthunder.png" class="absolute inset-0 w-full h-full object-cover opacity-10">
-
-
                 </div>
             </div>
+
+            <!-- Show a popup after end of the round remove class hidden -->
             <div id="magicDuelOutcomeContainer" class="hidden bg-white/60 absolute top-0 left-0 w-[100%] h-[100vh] p-5 z-10 flex justify-center items-center">
+
+                    <!-- Show a popup victory finishing attack after Koklemot's health is 0 -->
                     <div id="avadakedavra" class="hidden absolute z-30 w-[30%] h-[80%]">
-                        
                             <video  autoplay muted loop playsinline class="absolute mx-auto w-[85%] h-[95%] object-cover rounded-md -skew-x-8 border border-double border-[10px]">
                                 <source src="./asset/video/avadakedavra.mp4" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                     </div>
 
-                    <!-- <div id="crucio" class="hidden absolute z-30 w-[30%] h-[80%]">
-                        
-                            <video  autoplay muted loop playsinline class="absolute mx-auto w-[85%] h-[95%] object-cover rounded-md skew-x-8 border border-double border-[10px]">
-                                <source src="./asset/video/crucio2.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                    </div> -->
+                <!-- Status report after end of the round -->
                 <div id="magicDuelOutcome" class="hidden font-harrypotter">
                 <div id="magicDuelResult" class="font-harrypotter"></div>
                 <div id="magicDuelMessage" class="font-harrypotter"></div>
                 <div id="magicDuelClickCount" class="font-harrypotter"></div>
+
+                <!-- Show button win if you win the round show button lose if you lost the round -->
                 <button id="magicDuelOutcomeWinButton" class="hidden font-harrypotter p-5 m-5 border border-black rounded-lg shadow-lg hover:scale-105 active:scale-95 active:shadow-green-300 active:shadow-2xl cursor-pointer">Go To The Next Level</button>
                 <button id="magicDuelOutcomeLoseButton" class="hidden font-harrypotter p-5 m-5 border border-black rounded-lg shadow-lg hover:scale-105 active:scale-95 active:shadow-red-300 active:shadow-2xl cursor-pointer">Try Again</button>
+
+                <!-- Press exit if you want to quit -->
                 <button id="magicDuelOutcomeExitButton">Exit</button>
             </div>
 
             </div>
-
-
         </div>
         <div class='col-start-5 col-end-6 row-start-1 row-end-2 flex justify-center items-center'><div class="font-harrypotter text-2xl hover:-rotate-2 transition-hover duration-200">Koklemot</div></div>
         <div class="col-start-5 col-end-6 row-start-2 row-end-3 flex justify-center items-center font-harrypotter hidden" id="koklemotspellpower">Spell Speed: <span id="spellSpeed" class="font-harrypotter"></span></div>
