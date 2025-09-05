@@ -44,6 +44,7 @@ const gameStory = document.getElementById('gameStory');
 const chooseCharacterText = document.getElementById('chooseCharacterText');
 const generationList = document.getElementById('generationList');
 const charactersClass = document.getElementsByClassName('character');
+const yourHealthBar = document.getElementById('yourHealthBar');
 
 var roundCounter = 0;
 
@@ -266,6 +267,8 @@ var yourHPValue = 100;
 
 var enemyHPValue = 100;
 
+yourHealthBar.textContent = `${yourHPValue}/100`;
+
 //duel outcome
 function resultCheck(){
     setTimeout(()=>{
@@ -334,6 +337,7 @@ function duelStart(e){
     //assign health bar
     yourHP.style.width = `${yourHPValue}%`;
     enemyHP.style.width = `${enemyHPValue}%`;
+    yourHealthBar.textContent = `${yourHPValue}/100`;
 
     //once one of the element button is selected all of the element buttons will be hidden for 3.5s
     fireAttackButton.classList.add('hidden');
@@ -363,6 +367,7 @@ function duelStart(e){
                 gameInstruction.textContent = `Both you and your opponent dealt ${playerDamageThisTurn} damage! It's normally effective`;
                 yourHPValue = yourHPValue - enemyDamageThisTurn;
                 yourHP.style.width = `${yourHPValue}%`;
+                yourHealthBar.textContent = `${yourHPValue}/100`;
                 enemyHPValue = enemyHPValue - playerDamageThisTurn;
                 enemyHP.style.width = `${enemyHPValue}%`;
                 normallyEffectiveContainer++;
@@ -410,6 +415,7 @@ function duelStart(e){
                 gameInstruction.textContent = `You dealt ${playerDamageThisTurn} damage but your opponent dealt ${enemyDamageThisTurn} damage! It's super effective!`;
                 yourHPValue = yourHPValue - enemyDamageThisTurn;
                 yourHP.style.width = `${yourHPValue}%`;
+                yourHealthBar.textContent = `${yourHPValue}/100`;
                 enemyHPValue = enemyHPValue - playerDamageThisTurn;
                 enemyHP.style.width = `${enemyHPValue}%`;
                 notEffectiveContainer++;
@@ -456,6 +462,7 @@ function duelStart(e){
                 gameInstruction.textContent = `You dealt ${playerDamageThisTurn} damage but your opponent dealt ${enemyDamageThisTurn} damage! It's super effective!`;
                 yourHPValue = yourHPValue - enemyDamageThisTurn;
                 yourHP.style.width = `${yourHPValue}%`;
+                yourHealthBar.textContent = `${yourHPValue}/100`;
                 enemyHPValue = enemyHPValue - playerDamageThisTurn;
                 enemyHP.style.width = `${enemyHPValue}%`;
                 superEffectiveContainer++;
@@ -508,6 +515,7 @@ function duelStart(e){
                     gameInstruction.textContent = `You dealt ${playerDamageThisTurn} damage but your opponent dealt ${enemyDamageThisTurn} damage! It's super effective!`;
                     yourHPValue = yourHPValue - enemyDamageThisTurn;
                     yourHP.style.width = `${yourHPValue}%`;
+                    yourHealthBar.textContent = `${yourHPValue}/100`;
                     enemyHPValue = enemyHPValue - playerDamageThisTurn;
                     enemyHP.style.width = `${enemyHPValue}%`;
                     superEffectiveContainer++;
@@ -555,6 +563,7 @@ function duelStart(e){
                     gameInstruction.textContent = `Both you and your opponent dealt ${playerDamageThisTurn} damage! It's normally effective!`;
                     yourHPValue = yourHPValue - enemyDamageThisTurn;
                     yourHP.style.width = `${yourHPValue}%`;
+                    yourHealthBar.textContent = `${yourHPValue}/100`;
                     enemyHPValue = enemyHPValue - playerDamageThisTurn;
                     enemyHP.style.width = `${enemyHPValue}%`;
                     normallyEffectiveContainer++;
@@ -601,6 +610,7 @@ function duelStart(e){
                     gameInstruction.textContent = `You dealt ${playerDamageThisTurn} damage but your opponent dealt ${enemyDamageThisTurn} damage! It's super effective!`;
                     yourHPValue = yourHPValue - enemyDamageThisTurn;
                     yourHP.style.width = `${yourHPValue}%`;
+                    yourHealthBar.textContent = `${yourHPValue}/100`;
                     enemyHPValue = enemyHPValue - playerDamageThisTurn;
                     enemyHP.style.width = `${enemyHPValue}%`;
                     elementYou.innerHTML = `<img src="./asset/water.png" alt="Water Icon">`;
@@ -656,6 +666,7 @@ function duelStart(e){
                     gameInstruction.textContent = `You dealt ${playerDamageThisTurn} damage but your opponent dealt ${enemyDamageThisTurn} damage! It's super effective!`;
                     yourHPValue = yourHPValue - enemyDamageThisTurn;
                     yourHP.style.width = `${yourHPValue}%`;
+                    yourHealthBar.textContent = `${yourHPValue}/100`;
                     enemyHPValue = enemyHPValue - playerDamageThisTurn;
                     enemyHP.style.width = `${enemyHPValue}%`;
                     notEffectiveContainer++;
@@ -706,6 +717,7 @@ function duelStart(e){
                     gameInstruction.textContent = `You dealt ${playerDamageThisTurn} damage but your opponent dealt ${enemyDamageThisTurn} damage! It's super effective!`;
                     yourHPValue = yourHPValue - enemyDamageThisTurn;
                     yourHP.style.width = `${yourHPValue}%`;
+                    yourHealthBar.textContent = `${yourHPValue}/100`;
                     enemyHPValue = enemyHPValue - playerDamageThisTurn;
                     enemyHP.style.width = `${enemyHPValue}%`;
                     superEffectiveContainer++;
@@ -753,6 +765,7 @@ function duelStart(e){
                     gameInstruction.textContent = `Both you and your opponent dealt ${playerDamageThisTurn} damage! It's normally effective!`;
                     yourHPValue = yourHPValue - enemyDamageThisTurn;
                     yourHP.style.width = `${yourHPValue}%`;
+                    yourHealthBar.textContent = `${yourHPValue}/100`;
                     enemyHPValue = enemyHPValue - playerDamageThisTurn;
                     enemyHP.style.width = `${enemyHPValue}%`;
                     normallyEffectiveContainer++;
@@ -803,6 +816,7 @@ function duelStart(e){
                     gameInstruction.textContent = `you dealt ${playerDamageThisTurn} damage and your opponent dealt ${enemyDamageThisTurn}! It's okay effective!`;
                     yourHPValue = yourHPValue - enemyDamageThisTurn;
                     yourHP.style.width = `${yourHPValue}%`;
+                    yourHealthBar.textContent = `${yourHPValue}/100`;
                     enemyHPValue = enemyHPValue - playerDamageThisTurn;
                     enemyHP.style.width = `${enemyHPValue}%`;
                     normallyEffectiveContainer++;
@@ -862,6 +876,7 @@ function duelStart(e){
                 enemyHPValue = 100;
                 yourHP.style.width = `${yourHPValue}%`;
                 enemyHP.style.width = `${enemyHPValue}%`;
+                yourHealthBar.textContent = `${yourHPValue}/100`;
 
                 //hide the duel container
                 duelContainer.classList.add("hidden");
