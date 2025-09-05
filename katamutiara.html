@@ -102,34 +102,37 @@
         <audio src="./asset/cardok.mp3" id="cardokSound"></audio>
         <audio src="./asset/victorysong2.mp3" id="cardvictorySound"></audio>
         <audio src="./asset/battlelostsong.mp3" id="cardlostSound"></audio>
+
+        <!--Introduction-->
         <div class="text-4xl font-bold mb-4 text-2xl font-preahvihear"><h1 class="animate-bounce">Kata-Kata Mutiara</h1></div>
         <div class="text-lg text-gray-900 mb-3 font-preahvihear" id="kataMutiaraDescription">Si Mutiara sering berkata-kata bijak tapi dia selalu lupa urutannya. Ayo bantu si Mutiara menyusun kata-kata bijaknya kembali</div>
         <button id="letPlayButton" class=" border border-black hover:scale-105 shadow-lg rounded-lg p-5 text-2xl font-preahvihear cursor-pointer active:scale-90 active:bg-blue-600 active:text-black">Let's Play</button>
-        <div id="countdownContainer" class="hidden border border-black rounded-md p-2 mb-2 text-md flex justify-center items-center font-preahvihear">
-            Waktu Tersisa:<div id="countdownText" class="text-md text-gray-600"></div>
-        </div>
 
-        <div id="firstKataMutiara" class="border border-black hidden rounded-md p-2 mb-1 flex justify-center items-center font-preahvihear">
+            <!--Timer-->
+            <div id="countdownContainer" class="hidden border border-black rounded-md p-2 mb-2 text-md flex justify-center items-center font-preahvihear">
+                Waktu Tersisa:<div id="countdownText" class="text-md text-gray-600"></div>
+            </div>
 
+            <!--Card Containers-->
+            <div id="firstKataMutiara" class="border border-black hidden rounded-md p-2 mb-1 flex justify-center items-center font-preahvihear"></div>
+            <div id="secondKataMutiara" class="border border-black hidden rounded-md p-2 mt-1 flex justify-center items-center font-preahvihear"></div>
 
-        </div>
-
-        <div id="secondKataMutiara" class="border border-black hidden rounded-md p-2 mt-1 flex justify-center items-center font-preahvihear">
-
-
-        </div>
-
+        <!--Game Outcome Container-->
         <div id="resultContainer" class="hidden border border-black rounded-md p-4 flex justify-center items-center absolute">
+
+            <!--Overlay element with thin opacity-->
             <div id="overlayResult" class="fixed inset-0 bg-black opacity-50"></div>
+
+            <!--Game Outcome-->
             <div class="relative z-10 text-center border border-black p-5 bg-white">
                 <div id="resultText" class="text-lg text-gray-600"></div>
                 <button id="playAgainButton" class="border border-black hover:scale-105 shadow-lg rounded-lg p-2 text-lg ml-4">Play Again</button>
+                <button id="nextLevelButton" class="hidden border border-black hover:scale-105 shadow-lg rounded-lg p-2 text-lg ml-4">Next Level</button>
             </div>
-
         </div>
-
     </section>
-        <footer class="bg-yellow-400 text-white p-6 mt-10">
+
+    <footer class="bg-yellow-400 text-white p-6 mt-10">
         <div class="container mx-auto text-center font-lexend">
             <p>&copy; 2025 RevoFun. All rights reserved.</p>
             <div class="mt-4 font-lexend">

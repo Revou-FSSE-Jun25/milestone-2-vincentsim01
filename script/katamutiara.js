@@ -11,8 +11,10 @@ const cardmoveSound = document.getElementById("cardmoveSound");
 const cardokSound = document.getElementById("cardokSound");
 const cardvictorySound = document.getElementById("cardvictorySound");
 const cardlostSound = document.getElementById("cardlostSound");
-// item[Object.keys(item)[0]][0]
-// item[Object.keys(item)[0]][1]
+const nextLevelButton = document.getElementById('nextLevelButton');
+
+let gameLevel = 5;
+
 const kataMutiara = [
     { 1 : ["Kamu memang seperti lempeng bumi", "bergeser sedikit saja sudah mengguncang hatiku"] },
     { 2 : ["Selain ada garuda di dadaku", "di dadaku juga selalu ada kamu."] },
@@ -55,13 +57,15 @@ function shuffleArray2(array) { // Make a copy so the original array is not chan
             return array;
 }
 
-function selectRandomPairs(data, count = 6) {
+function selectRandomPairs(data, count ) {
     const shuffled = shuffleArray(data); // Shuffle the array
     return shuffled.slice(0, count);     // Take the first `count` items
 }
 
+//to randomize the whole array
 let randomKataMutiara = shuffleArray(kataMutiara);
 
+//to pick 5 items from the randomized array
 let randomKataFive = selectRandomPairs(randomKataMutiara, 5);
 
 let firstKataArray = [];
@@ -94,13 +98,12 @@ letPlayButton.addEventListener("click", () => {
     createBoard();
 });
 
-let timeCounter = 31;
+let timeCounter = 46;
 let intervalId=null;
 function runCountDown(){
-    // clearInterval(intervalId);
-            if (intervalId) {
-                clearInterval(intervalId);
-            }
+    if (intervalId) {
+        clearInterval(intervalId);
+    }
     intervalId = setInterval(() => {
     if (timeCounter > 0) {
         timeCounter--;
@@ -111,38 +114,19 @@ function runCountDown(){
         cardlostSound.play();
         resultContainer.classList.remove("hidden");
         resultText.textContent = "You Lose!";
-
     }
 }, 1000);
 }
 
 
-// function youLose() {
-//             clearInterval(intervalId);
-//             countdownText.textContent = "Waktu habis!";
-//             resultContainer.classList.remove("hidden");
-//             resultText.textContent = "You Lose!";
-//             timeCounter = 30;
-
-// }
-
  function createBoard() {
-            // firstKataMutiara.innerHTML = "";
-            // secondKataMutiara.innerHTML = "";
             setTimeout(runCountDown, 3000);
 
             randomKataFive.forEach((item) => {
-                // firstKataArray.push(item[Object.keys(item)[0]][0]);
-                // shuffledfirstKataArray = shuffleArray(firstKataArray);
-                // secondKataArray.push(item[Object.keys(item)[0]][1]);
-                // shuffledsecondKataArray = shuffleArray(secondKataArray);
-
                 const card1 = document.createElement("div");
                 card1.classList.add("card");
                 card1.classList.add("m-3");
                 card1.textContent = '?';
-                // card1.style.backgroundColor = "rgb(51, 102, 204)";
-                // card1.style.backgroundImage = "url('../asset/bordersea.jpg')";
                 card1.dataset.Content = item[Object.keys(item)[0]][0];
                 card1.dataset.id = item[Object.keys(item)[0]];
                 card1.classList.add("firstPhraseMove");
@@ -153,26 +137,25 @@ function runCountDown(){
                 card2.classList.add("card2");
                 card2.classList.add("m-3");
                 card2.textContent = '?';
-                card2.style.backgroundColor = "rgba(43, 51, 67, 1)";
                 card2.style.backgroundPosition = "left";
                 card2.dataset.Content = item[Object.keys(item)[0]][1];
                 card2.dataset.id = item[Object.keys(item)[0]];
                 card2.classList.add("secondPhraseMove");
                 card2.addEventListener("click", flipCard);
                 secondKataMutiara.appendChild(card2);
-
-
-
             });
 
+            //from the array of cards for 1st phrase then we will randomize the order
             const divs = Array.from(firstKataMutiara.children);
             let shuffleddivs = shuffleArray2(divs)
             shuffleddivs.forEach(div => firstKataMutiara.appendChild(div)); 
 
+            //from the array of cards for 2nd phrase then we will randomize the order
             const divs2 = Array.from(secondKataMutiara.children);
             let shuffleddivs2 = shuffleArray2(divs2)
             shuffleddivs2.forEach(div => secondKataMutiara.appendChild(div));  
 
+            //moving intro animation for the cards set at 4 seconds and then the css is removed
             setTimeout(()=>{
                 const firstPhraseMoveElements = document.querySelectorAll('.firstPhraseMove');
                 firstPhraseMoveElements.forEach(element => {
@@ -185,26 +168,6 @@ function runCountDown(){
                 });
             }, 4000);
     }
-
-    // function randomizeDiv(){
-    //         const divs = Array.from(firstKataMutiara.querySelectorAll('.card'));
-    //         let shuffleddivs = shuffleArray2(divs)
-    //         shuffleddivs.forEach(div => firstKataMutiara.appendChild(div)); 
-
-    //         const divs2 = Array.from(secondKataMutiara.querySelectorAll('.card'));
-    //         let shuffleddivs2 = shuffleArray2(divs2)
-    //         shuffleddivs2.forEach(div => secondKataMutiara.appendChild(div));       
-    // }
-
-    // randomizeDiv();
-
-
-
-    // const cardClassElement = document.getElementsByClassName("card");
-    // for(let i=cardClassElement.length-1; i>=0; i--) {
-    //         const j = Math.floor(Math.random() * (i + 1)); 
-    // }
-
     function flipCard() {
         if (this.classList.contains("flipped")) return;    
         this.textContent = this.dataset.Content;
@@ -213,16 +176,7 @@ function runCountDown(){
 
         if (!firstCard) {
             firstCard = this;
-
-            // setTimeout(() => {
-            //     checkMatch();
-            // }, 5000);
-
         } 
-        // else if(firstCard && secondCard)
-        //     {
-
-        //     }
         else if (firstCard && !secondCard) {
             secondCard = this;
             if (firstCard.parentElement === this.parentElement) {
@@ -234,43 +188,17 @@ function runCountDown(){
                 return
             }
 
-            // this.textContent = this.dataset.Content;
-            // this.classList.add("flipped");
             checkMatch();
         } 
-        // else if (firstCard.parentElement === this.parentElement) {
-        //     secondCard = null;
-            // this.textContent = '?';
-            // this.classList.remove("flipped");
-        // } 
+
+        //if there is a third card being flipped the system will say no
         else if (firstCard!== null && secondCard !== null) {
             alert('Please wait for the pearl to finish checking');
             this.textContent = '?';
             this.classList.remove("flipped");
-            // firstCard = this;
-
-
         }
 
-        console.log(`firstCard: ${firstCard.textContent}, secondCard: ${secondCard.textContent}`);
-
     }
-
-  
-
-    //     function flipCard() {
-    //   if (lockBoard || this.classList.contains("flipped")) return;
-
-    //   this.textContent = this.dataset.symbol;
-    //   this.classList.add("flipped");
-
-    //   if (!firstCard) {
-    //     firstCard = this;
-    //   } else {
-    //     secondCard = this;
-    //     checkMatch();
-    //   }
-    // }
 
         function checkMatch() {
             if (firstCard.dataset.id === secondCard.dataset.id) {
@@ -278,23 +206,14 @@ function runCountDown(){
                 secondCard.classList.add("matched");
                 cardokSound.play();
                 resetTurn();
-
             } 
-            // else if(firstCard.classList.contains("flipped") && !secondCard.classList.contains("flipped")) {
-            //     firstCard.textContent = "?";
-            //     firstCard.classList.remove("flipped");
-            //     firstCard = null;
-            //     alert('only firstclick')
-            // }
             else {
-
                 setTimeout(() => {
                 firstCard.textContent = "?";
                 secondCard.textContent = "?";
                 firstCard.classList.remove("flipped");
                 secondCard.classList.remove("flipped");
                 resetTurn();
-                // [firstCard, secondCard] = [null, null];
                 }, 1000);
             }
         }
@@ -304,31 +223,53 @@ function runCountDown(){
             secondKataMutiara.textContent="";
             resultContainer.classList.add("hidden");
             resultText.textContent = "";
+            //to randomize the whole array
+            randomKataMutiara = shuffleArray(kataMutiara);
 
-            // countdownContainer.classList.add("hidden");
-
+            //to pick 5 items from the randomized array
+            randomKataFive = selectRandomPairs(randomKataMutiara, gameLevel);
             createBoard();
+        }
+
+        function playAgainWin(){
+            firstKataMutiara.textContent="";
+            secondKataMutiara.textContent="";
+            resultContainer.classList.add("hidden");
+            resultText.textContent = "";
+            //to randomize the whole array
+            randomKataMutiara = shuffleArray(kataMutiara);
+            gameLevel++;
+
+            //to pick 5 items from the randomized array
+            randomKataFive = selectRandomPairs(randomKataMutiara, gameLevel);
+            createBoard();
+
+            //hide the nextlevel button after 1 second
+            setTimeout(() => {
+                nextLevelButton.classList.add('hidden')
+            },1000)
         }
 
         playAgainButton.addEventListener("click", () => {
             clearInterval(intervalId);
-            timeCounter = 31;
+            timeCounter = 46;
             playAgain();
-            // timeCounter = 30;
         })
 
-        
+        nextLevelButton.addEventListener("click", () => {
+            clearInterval(intervalId);
+            timeCounter = 46;
+            playAgainWin();
+        })
 
         function resetTurn() {
             [firstCard, secondCard] = [null, null];
-            //   lockBoard = false;
-
-            // Check win
             if (document.querySelectorAll(".matched").length === randomKataFive.length*2) {
                 setTimeout(
                     () => 
                         {
                         resultContainer.classList.remove("hidden");
+                        nextLevelButton.classList.remove("hidden");
                         resultText.textContent = "🎉 You Win!";
                         cardvictorySound.play();
 
@@ -336,21 +277,6 @@ function runCountDown(){
                      500);
             }
         }
-
-    // createBoard();
-
-// randomKataFive.map((item) => {
-//     firstKataMutiara.innerHTML += `
-//         <div class="text-gray-700 w-[15%] h-[30vh] border border-black">
-//             "${item[Object.keys(item)[0]][0]}"
-//         </div>
-//     `;
-//     secondKataMutiara.innerHTML += `
-//         <div class="text-gray-700 w-[15%] h-[30vh] border border-black">
-//             "${item[Object.keys(item)[0]][1]}"
-//         </div>
-//     `;
-// })
 
 
 
