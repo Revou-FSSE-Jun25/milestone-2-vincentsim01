@@ -187,7 +187,6 @@ function runCountDown(){
                 }, 800);
                 return
             }
-
             checkMatch();
         } 
 
@@ -218,6 +217,7 @@ function runCountDown(){
             }
         }
 
+        //click the play at the same level again button
         function playAgain(){
             firstKataMutiara.textContent="";
             secondKataMutiara.textContent="";
@@ -231,6 +231,7 @@ function runCountDown(){
             createBoard();
         }
 
+        // click the next level button
         function playAgainWin(){
             firstKataMutiara.textContent="";
             secondKataMutiara.textContent="";
@@ -250,29 +251,37 @@ function runCountDown(){
             },1000)
         }
 
+        //play again button will always appear regardless player lose or win the round and the difficulty remains the same
         playAgainButton.addEventListener("click", () => {
             clearInterval(intervalId);
             timeCounter = 46;
             playAgain();
         })
 
+        //next level button will appear only when player managed to clear the round and the difficulty will increase by 1 additional card
         nextLevelButton.addEventListener("click", () => {
             clearInterval(intervalId);
             timeCounter = 46;
             playAgainWin();
         })
 
+        // set the card back
         function resetTurn() {
             [firstCard, secondCard] = [null, null];
             if (document.querySelectorAll(".matched").length === randomKataFive.length*2) {
                 setTimeout(
                     () => 
                         {
+                        //show result and the next level button
                         resultContainer.classList.remove("hidden");
                         nextLevelButton.classList.remove("hidden");
                         resultText.textContent = "🎉 You Win!";
                         cardvictorySound.play();
 
+                        //stop interval first then when createboard function is called then it will reset the countdown
+                        if (intervalId) {
+                            clearInterval(intervalId);
+                        }
                     },
                      500);
             }
